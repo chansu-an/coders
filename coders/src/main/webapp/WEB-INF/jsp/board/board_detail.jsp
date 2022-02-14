@@ -52,6 +52,7 @@
 			<col width="20%" />
 			<col width="10%" />
 			<col width="10%" />
+			<col width="10%" />
 		</colgroup>
 		<thead>
 			<tr>
@@ -62,6 +63,7 @@
 				<th scope="col">작성일</th>
 				<th scope="col">조회수</th>
 				<th scope="col">추천수</th>
+				<th scope="col">신고수</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -75,6 +77,7 @@
 						<td>${map.BOARD_DATE }</td>
 						<td>${map.READ_COUNT }</td>
 						<td>${map.RECOMMEND_COUNT }</td>
+						<td>${map.REPORT_COUNT }</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
@@ -83,10 +86,24 @@
 					</tr>
 				</c:otherwise>
 			</c:choose>
+			
 
 		</tbody>
 	</table>
+	<!-- 작성자만 가능 -->
 	<a href="/net/board/modify.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="write">수정하기</a>
+	<a href="/net/board/delete.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="delete">삭제하기</a>
+	
+	<!-- 스크랩하기 -->
+	
+	
+	<!-- 신고, 추천 -->
+	<!-- 신고하기 누르면 REPORT_COUNT + 1, 추천하기 누르면 RECOMMEND_COUNT + 1 -->
+	<div>
+	<a href="/net/board/recommend.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="recommend">추천하기</a>
+	<a href="/net/board/report.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="report">신고하기</a>	
+	</div>
+	
 	<!-- 댓글 리스트 -->
 	<div id="reply">
 	  <div>댓글 <c:out value="${count.COUNT }"></c:out></div>
