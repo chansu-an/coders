@@ -24,6 +24,18 @@ public class MypageDAO extends AbstractDAO{
 	public List<Map<String, Object>> selectProjectList(Map<String, Object> map)throws Exception{
 		return(List<Map<String, Object>>)selectList("user.selectProjectList", map);
 	}
+	//유저삭제
+	public void deleteUser(Map<String, Object> map )throws Exception{
+		update("user.deleteUser", map);
+	}
+	//스크랩추가
+	public void insertScrap(Map<String, Object> map)throws Exception{
+		insert("user.insertScrap", map);
+	}
+	//팔로우추가
+	public void insertFollow(Map<String, Object> map)throws Exception{
+		insert("user.insertFollow", map);
+	}
 	
 	//작성글 리스트
 	@SuppressWarnings("unchecked")

@@ -25,4 +25,10 @@ public interface MypageService {
 	public List<Map<String, Object>> selectScrapList(Map<String, Object> map)throws Exception;
 	
 	public void updateMypage(Map<String, Object> map)throws Exception;
+	
+	public void deleteUser(Map<String, Object> map )throws Exception;
+	
+	public void insertScrap(Map<String, Object> map)throws Exception;
+	
+	public void insertFollow(Map<String, Object> map)throws Exception;
 }
