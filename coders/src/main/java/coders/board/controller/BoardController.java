@@ -1,15 +1,15 @@
 package coders.board.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.maven.model.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import coders.board.service.BoardService;
@@ -24,21 +24,23 @@ public class BoardController {
 	private BoardService boardService;
 	
 	//글목록 보기
-	@RequestMapping(value="/board/openBoardList.do")
+	@RequestMapping(value="/board/openBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception {
 		ModelAndView mav = new ModelAndView("/board/board_list");
 		
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+		List<Map<String, Object>> list2 = boardService.selectBoardList(commandMap.getMap());
 		mav.addObject("list", list);
+		mav.addObject("list2", list2);
 		
 		return mav;
 	}
 	
 	//메인에 올라갈 최근 공지, qna 인기글, 자유게시판 인기글
 	@RequestMapping(value="/board/mainList.do")
-	public ModelAndView noticeList(CommandMap commandMap) throws Exception {
-		ModelAndView mav = new ModelAndView("/board/main_list");
-				
+	public ModelAndView noticeList(CommandMap commandMap, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView("/board/main_list");		
+		
 		List<Map<String, Object>> list1 = boardService.selectNoticeList(commandMap.getMap());
 		List<Map<String, Object>> list2 = boardService.selectQnaBestList(commandMap.getMap());
 		List<Map<String, Object>> list3 = boardService.selectFreeBestList(commandMap.getMap());
@@ -71,37 +73,47 @@ public class BoardController {
 	
 	//글 상세보기
 	@RequestMapping(value="/board/detail.do")
-	public ModelAndView selectBoardDetail(CommandMap commandMap,HttpServletRequest request) throws Exception {
-		
+	public ModelAndView selectBoardDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("/board/board_detail");
-		String no = request.getParameter("BOARD_NO");
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("BOARD_NO", no);
-		Map<String, Object> map = boardService.selectBoardDetail(map1);
-		mav.addObject("map", map.get("map"));
-		mav.addObject("list", map.get("list"));
+		
+		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
+		List<Map<String, Object>> list = boardService.selectCommentList(commandMap.getMap());
+		Map<String, Object> count = boardService.selectCommentCount(commandMap.getMap());
+		mav.addObject("map", map);
+		mav.addObject("list", list);
+		mav.addObject("count", count);
+		/* mav.addObject("list", map.get("list")); */
 		
 		return mav;
 	}
 	
-	//글 수정하기
-	@RequestMapping(value="/board/modify.do")
-	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception {
+	//글 수정하기폼
+	@RequestMapping(value="/board/modify.do", method = RequestMethod.GET)
+	public ModelAndView openBoardUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("/board/board_modify");
 		
+		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
-		mav.addObject("map", map.get("map"));
-		mav.addObject("list", map.get("list"));
+		
+		mav.addObject("map", map);
+		/* mav.addObject("list", map.get("list")); */
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/board/modifyBoard.do")
-	public ModelAndView updateBoard(CommandMap commandMap, HttpServletRequest req) throws Exception {
-		ModelAndView mav = new ModelAndView("redirect:/board/openBoardDetail.do");
+	@RequestMapping(value="/board/modify.do", method = RequestMethod.POST)
+	public ModelAndView updateBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/board/openBoardList.do");
 		
-		boardService.updateBoard(commandMap.getMap(), req);
-		mav.addObject("BOARD_NO", commandMap.get("BOARD_NO"));
+		commandMap.put("TITLE", request.getParameter("TITLE"));
+		commandMap.put("CONTEXT", request.getParameter("CONTEXT"));
+		commandMap.put("IDENTI_TYPE", '1');
+		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		
+		boardService.updateBoard(commandMap.getMap());
+		
 		return mav;
 	}
 	
@@ -131,6 +143,15 @@ public class BoardController {
 		List<Map<String, Object>> list = boardService.selectReportList(commandMap.getMap());
 		mav.addObject("list", list);
 		
+		return mav;
+	}
+	
+	@RequestMapping(value="/board/commentInsert.do", method = RequestMethod.POST)
+	public ModelAndView InsertComment(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));
+		System.out.println(request.getParameter("CONTEXT"));
+		System.out.println(request.getParameter("BOARD_NO"));
+		System.out.println(session.getAttribute("USER_NO"));
 		return mav;
 	}
 }
