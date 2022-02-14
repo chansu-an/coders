@@ -50,6 +50,7 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.update(map);
 	}
 
+	// 게시글 삭제하기
 	@Override
 	public void deleteBoard(Map<String, Object> map) throws Exception {
 		boardDAO.delete(map);
@@ -93,6 +94,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Map<String, Object> selectCommentCount(Map<String, Object> map) throws Exception {
 		return boardDAO.selectCommentCount(map);
+	}
+
+	//게시글 신고하기
+	@Override
+	public void reportBoard(Map<String, Object> map) throws Exception {
+		boardDAO.reportBoard(map);
+	}
+
+	//게시글 추천하기
+	@Override
+	public void recommendBoard(Map<String, Object> map) throws Exception {
+		boardDAO.recommendBoard(map);
+		
 	}
 	
 	

@@ -84,4 +84,12 @@ public class BoardDAO extends AbstractDAO {
 		return (Map<String, Object>)selectOne("board.commentCount", map);
 	}
 
+	public void reportBoard(Map<String, Object> map) {
+		update("board.reportBoard", map);	
+	}
+
+	public void recommendBoard(Map<String, Object> map) {
+		update("board.recommendBoard", map);
+	}
+
 }
