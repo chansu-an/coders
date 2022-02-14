@@ -88,12 +88,8 @@ public class ProjectController {
 	public ModelAndView ProjectModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/project/project_board_detail");
 
-		commandMap.put("PROJECT_NAME", request.getParameter("PROJECT_NAME"));
-		commandMap.put("PROJECT_START", request.getParameter("PROJECT_START"));
-		commandMap.put("PROJECT_END", request.getParameter("PROJECT_END"));
-		commandMap.put("PROJECT_MEMBER", request.getParameter("PROJECT_MEMBER"));
-		commandMap.put("PROJECT_CONTEXT", request.getParameter("PROJECT_CONTEXT"));
-
+		
+		System.out.println(commandMap.getMap());
 		projectService.updateProject(commandMap.getMap());
 		mav.addObject("EMAIL", commandMap.get("EMAIL"));
 		return mav;

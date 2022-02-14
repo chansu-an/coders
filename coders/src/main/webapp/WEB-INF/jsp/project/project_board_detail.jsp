@@ -43,7 +43,7 @@
                 </nav>
                 <!-- Page content-->
 	<h2>게시판 상세보기</h2>
-	<table class=project_list">
+	<table class=project_board_list">
 		<colgroup>
 			<col width="10%" />
 			<col width="*%" />
@@ -68,13 +68,13 @@
 			<c:choose>
 				<c:when test="${!empty map}">
 					<tr>
-						<td>${map.PROJECT_NO }</td>
- 						<td>${map.PROJECT_NAME }</td>
-						<td>${map.USER_NO }</td>
-						<td>${map.PROJECT_CONTEXT }</td>
-						<td>${map.PROJECT_START }</td>
-						<td>${map.PROJECT_END }</td>
-						<td>${map.PROJECT_MEMBER }</td>
+						<td>${map.PROJECT_NO}</td>
+ 						<td>${map.PROJECT_NAME}</td>
+						<td>${map.USER_NO}</td>
+						<td>${map.PROJECT_CONTEXT}</td>
+						<td>${map.PROJECT_START}</td>
+						<td>${map.PROJECT_END}</td>
+						<td>${map.PROJECT_MEMBER}</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
