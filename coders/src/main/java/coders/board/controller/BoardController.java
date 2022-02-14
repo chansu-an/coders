@@ -31,16 +31,26 @@ public class BoardController {
 		
 		//commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 		mav.addObject("list", list);
 		/*
 		 * Map<String, Object> count =
 		 * boardService.selectCommentCount(commandMap.getMap()); mav.addObject("count",
 		 * count);
 		 */
+<<<<<<< HEAD
 		
 		mav.addObject("list", list);
 
+=======
+
+		
+		mav.addObject("list", list);
+>>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 		
 		return mav;
 	}
