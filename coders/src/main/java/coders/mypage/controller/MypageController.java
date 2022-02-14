@@ -116,7 +116,7 @@ public ModelAndView followList(HttpServletRequest request,HttpSession session) {
 		mav.addObject("CHECK","N");
 		return mav;
 }
-	//프로젝트리스트
+	//참가프로젝트리스트
 	@RequestMapping(value = "/Mypage/ProjectList.do")
 public ModelAndView projectList(HttpServletRequest request,HttpSession session )throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -136,6 +136,7 @@ public ModelAndView projectList(HttpServletRequest request,HttpSession session )
 		mav.addObject("CHECK","N");
 		return mav;
 }
+	//작성글 리스트
 	@RequestMapping(value = "/Mypage/WriteList.do")
 public ModelAndView writeList(HttpServletRequest request,HttpSession session )throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -144,6 +145,7 @@ public ModelAndView writeList(HttpServletRequest request,HttpSession session )th
 		String user_no = request.getParameter("USER_NO");
 		mapor.put("USER_NO",user_no );
 		List<Map<String, Object>> list = mypageService.selectWriteList(mapor);
+		System.out.println(list);
 		mav.addObject("list",list);
 		mav.setViewName("/mypage/myWrite");
 		mav.addObject("USER_NO",user_no);
@@ -155,14 +157,16 @@ public ModelAndView writeList(HttpServletRequest request,HttpSession session )th
 		mav.addObject("CHECK","N");
 		return mav;
 }
+	//유저삭제
 	@RequestMapping(value = "/Mypage/UserDelete.do")
-public ModelAndView mypageDelete() {
+public ModelAndView mypageDelete(HttpSession session)throws Exception {
 		ModelAndView mav = new ModelAndView();
-		Map<String, Object> mapor = new HashMap<String, Object>();
-		mapor.put("USER_NO", 1);
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+		mypageService.deleteUser(smap);
 		mav.setViewName("redirect:/userDelete");
 		return mav;
 }
+	//알림페이지로
 	@RequestMapping(value = "/Mypage/Notification.do")
 public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -174,6 +178,7 @@ public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 		mav.setViewName("/mypage/Notification");
 		return mav;
 }
+	//작성글 알림 삭제
 	@RequestMapping(value = "/Mypage/ArlistClick.do")
 	public ModelAndView clickArlist(HttpServletRequest request)throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -184,6 +189,7 @@ public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 		return mav;
 		
 	}
+	//프로젝트 알림삭제
 	@RequestMapping(value = "/Mypage/ProjectArClick.do")
 	public ModelAndView clickProjectAr(HttpSession session,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -193,6 +199,34 @@ public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 		mapor.put("PROJECT_NO", no);
 		mav.setViewName("redirect:/Project/Team.do?PROJECT_NO="+no);
 		return mav;
+		
+	}
+	//팔로우추가
+	@RequestMapping(value = "/Mypage/insertFollow.do")
+	public String insertFollow(HttpServletRequest request,HttpSession session)throws Exception {
+		String follower = request.getParameter("USER_NO");
+		if(session==null) {
+			//로그인 안함
+			return "redirect:/main/Mypage.do?USER_NO="+follower;}
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+		String USER_NO = (String)smap.get("USER_NO");
+		if(USER_NO.equals(follower)) {
+			//자기자신팔로우
+			return "redirect:/main/Mypage.do?USER_NO="+follower;
+		}
+		smap.put("FOLLWER", follower);
+		mypageService.insertFollow(smap);
+		return "redirect:/main/Mypage.do?USER_NO="+follower;
+		
+	}
+	//스크랩추가
+	@RequestMapping(value = "/Mypage/insertScrap.do")
+	public String insertScrap(HttpServletRequest request,HttpSession session)throws Exception {
+		String BOARD_NO = request.getParameter("USER_NO");
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+		smap.put("BOARD_NO", BOARD_NO);
+		mypageService.insertFollow(smap);
+		return "redirect:/board/detail.do?BOARD_NO="+BOARD_NO;
 		
 	}
 
