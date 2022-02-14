@@ -77,18 +77,16 @@ public class ProjectController {
 	@RequestMapping(value = "/Project/Modify.do", method = RequestMethod.GET)
 	public ModelAndView ProjectModifyForm(CommandMap commandMap) throws Exception {
 		ModelAndView mav = new ModelAndView("/project/project_board_modify");
-
 		Map<String, Object> map = projectService.selectProjectDetail(commandMap.getMap());
+		System.out.println(map);
 		mav.addObject("map", map);
 		return mav;
 	}
 
 //프로젝트 수정
 	@RequestMapping(value = "/Project/Modify.do", method = RequestMethod.POST)
-	public ModelAndView ProjectModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mav = new ModelAndView("redirect:/project/project_board_detail");
-
-		
+	public ModelAndView ProjectModify(CommandMap commandMap) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/Project.do");
 		System.out.println(commandMap.getMap());
 		projectService.updateProject(commandMap.getMap());
 		mav.addObject("EMAIL", commandMap.get("EMAIL"));
