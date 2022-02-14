@@ -93,7 +93,7 @@
 				<c:when test="${fn:length(list1) > 0}">
 					<c:forEach items="${list1 }" var="row">
 						<tr>
-							<td>${row.TITLE }</td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 						</tr>
@@ -130,7 +130,7 @@
 				<c:when test="${fn:length(list2) > 0}">
 					<c:forEach items="${list2 }" var="row">
 						<tr>
-							<td>${row.TITLE }</td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 							<td>${row.RECOMMEND_COUNT }</td>
@@ -167,7 +167,7 @@
 				<c:when test="${fn:length(list3) > 0}">
 					<c:forEach items="${list3 }" var="row">
 						<tr>
-							<td>${row.TITLE }</td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 							<td>${row.RECOMMEND_COUNT }</td>
