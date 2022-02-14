@@ -73,5 +73,15 @@ public class BoardDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectReportList(Map<String, Object> map) {
 		return (List<Map<String, Object>>)selectList("board.selectReportList", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectCommentList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("board.commentList", map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectCommentCount(Map<String, Object> map) {
+		return (Map<String, Object>)selectOne("board.commentCount", map);
+	}
 
 }
