@@ -26,7 +26,7 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                                <li class="nav-item active"><a class="nav-link"><c:out value="${session.NICK_NAME}"/>님 환영합니다</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -70,7 +70,7 @@
 					<tr>
 						<td>${map.BOARD_NO }</td>
  						<td>${map.TITLE }</td>
-						<td>${map.WRITER }</td>
+						<td>${map.NICK_NAME }</td>
 						<td>${map.CONTEXT }</td>
 						<td>${map.BOARD_DATE }</td>
 						<td>${map.READ_COUNT }</td>
@@ -99,7 +99,9 @@
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
 			        </p>			
-			        <p>${row.CONTEXT}</p>	
+			        <p>${row.CONTEXT}               		
+			        	<a href="/net/board/commentDelete.do?RE_NO=${row.RE_NO }&BOARD_NO=${map.BOARD_NO}" class="btn">삭제</a>	
+			        </p>
 			    </div>		        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '1' }">
@@ -108,7 +110,7 @@
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
 			        </p>			
-			        <img src="./img/arrow.png" width="60" height="60"/>${row.CONTEXT}
+			        <img src="../img/arrow.png" width="30" height="30"/>${row.CONTEXT}
 			    </div>			        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '2' }">
@@ -117,7 +119,7 @@
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
 			        </p>			
-			        <img src="../img/arrow.png" width="30" height="30"/><img src="../img/arrow.png" width="30" height="30"/>${row.CONTEXT}	
+			        <img src="../img/arrow.png" width="30" height="30"/>${row.CONTEXT}	
 			    </div>	        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '3' }">
@@ -126,7 +128,7 @@
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
 			        </p>			
-			        <img src="../net/img/arrow.png"/><img src="./net/img/arrow.png"/><img src="/net/img/arrow.png"/>${row.CONTEXT}
+			        <img src="../img/arrow.png" width="30" height="30"/>${row.CONTEXT}
 			    </div>		        
 		        </c:when>
 	        </c:choose>

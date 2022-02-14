@@ -31,6 +31,10 @@ public interface BoardService {
 	List<Map<String, Object>> selectCommentList(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> selectCommentCount(Map<String, Object> map) throws Exception;
+	
+	void insertComment(Map<String, Object> map) throws Exception;
+	
+	void deleteComment(Map<String, Object> map) throws Exception;
 
 	
 }
