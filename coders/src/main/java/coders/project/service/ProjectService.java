@@ -3,6 +3,7 @@ package coders.project.service;
 import java.util.List;
 import java.util.Map;
 
+
 public interface ProjectService {
 
 	List<Map<String, Object>> selectProjectList(Map<String, Object> map) throws Exception;
@@ -22,6 +23,8 @@ public interface ProjectService {
 
 	void insertProjectApp(Map<String, Object> map) throws Exception;
 
+	// 파일 업로드 
+		void selectProjectFile(Map<String,Object>map)throws Exception;
 	
 	
 		

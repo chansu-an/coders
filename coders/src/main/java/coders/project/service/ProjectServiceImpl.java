@@ -60,4 +60,10 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDAO.insertProjectApp(map);
 	}
 
+	//파일 업로드 
+	
+		@Override
+		public void selectProjectFile(Map<String,Object>map)throws Exception{
+			projectDAO.insertProject(map);
+		}
 }

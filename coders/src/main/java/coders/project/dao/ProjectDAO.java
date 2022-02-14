@@ -3,6 +3,7 @@ package coders.project.dao;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.stereotype.Repository;
 
 import coders.common.dao.AbstractDAO;
@@ -56,4 +57,9 @@ public class ProjectDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("project.selectProjectEList", map);
 	}
 
+	// 파일업로드 
+	
+		public void selectProjectFile(Map<String,Object>map)throws Exception{
+			insert("project.insertProject",map);
+		}
 }
