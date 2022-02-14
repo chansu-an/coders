@@ -10,17 +10,34 @@
 <body>
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-                </div>
-            </div>
+            <c:choose>
+				<c:when test="${session.ADMIN == 'Y'}">
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>		                    
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">신고관리</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+		                </div>
+            		</div>
+	            </c:when>
+	            <c:otherwise>
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>
+		                </div>
+            		</div>
+	            </c:otherwise>
+            </c:choose>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
@@ -54,6 +71,7 @@
 			<col width="15%" />
 			<col width="20%" />
 			<col width="20%" />
+			<col width="20%" />
 		</colgroup>
 		<thead>
 			<tr>
@@ -72,7 +90,7 @@
 						<tr>
 							<td>${row.ROWNUM }</td>
 							<%-- <td>${row.PROJECT_NAME }</td> --%>
-							<td><a href="Project/Detail.do?PROJECT_NO=${row.PROJECT_NO }">${row.PROJECT_NAME}</a>
+							<td><a href="/net/Project/Detail.do?PROJECT_NO=${row.PROJECT_NO }">${row.PROJECT_NAME}</a>
 							<td>${row.PROJECT_START }</td>
 							<td>${row.PROJECT_END }</td>
 							<td>${row.PROJECT_MEMBER }</td>
