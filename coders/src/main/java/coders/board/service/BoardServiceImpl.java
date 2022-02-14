@@ -90,9 +90,22 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectCommentList(map);
 	}
 
+	//게시글 댓글수
 	@Override
 	public Map<String, Object> selectCommentCount(Map<String, Object> map) throws Exception {
 		return boardDAO.selectCommentCount(map);
+	}
+
+	//게시글 댓글 삽입
+	@Override
+	public void insertComment(Map<String, Object> map) throws Exception {
+		boardDAO.insertComment(map);		
+	}
+
+	//게시글 댓글 삭제
+	@Override
+	public void deleteComment(Map<String, Object> map) throws Exception {
+		boardDAO.deleteComment(map);
 	}
 	
 	
