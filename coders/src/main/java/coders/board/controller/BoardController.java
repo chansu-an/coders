@@ -31,12 +31,17 @@ public class BoardController {
 		
 		//commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+<<<<<<< HEAD
 		mav.addObject("list", list);
 		/*
 		 * Map<String, Object> count =
 		 * boardService.selectCommentCount(commandMap.getMap()); mav.addObject("count",
 		 * count);
 		 */
+=======
+		
+		mav.addObject("list", list);
+>>>>>>> 17450a49485d3496a7f51575aa9e8da82679ab5a
 		
 		return mav;
 	}
@@ -83,8 +88,8 @@ public class BoardController {
 		
 		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
-		List<Map<String, Object>> list = boardService.selectCommentList(commandMap.getMap());
-		Map<String, Object> count = boardService.selectCommentCount(commandMap.getMap());
+		List<Map<String, Object>> list = boardService.selectCommentList(commandMap.getMap());//댓글 리스트
+		Map<String, Object> count = boardService.selectCommentCount(commandMap.getMap());//댓글수
 		mav.addObject("map", map);
 		mav.addObject("list", list);
 		mav.addObject("count", count);
@@ -161,6 +166,7 @@ public class BoardController {
 		return mav;
 	}
 	
+<<<<<<< HEAD
 	//글 추천하기
 		@RequestMapping(value="/board/recommend.do" )
 		public ModelAndView recommendBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -172,12 +178,29 @@ public class BoardController {
 		}
 	
 	//댓글 작성하기
+=======
+	//게시글 댓글 작성
+>>>>>>> 17450a49485d3496a7f51575aa9e8da82679ab5a
 	@RequestMapping(value="/board/commentInsert.do", method = RequestMethod.POST)
 	public ModelAndView InsertComment(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));
-		System.out.println(request.getParameter("CONTEXT"));
-		System.out.println(request.getParameter("BOARD_NO"));
-		System.out.println(session.getAttribute("USER_NO"));
+		
+		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		commandMap.put("USER_NO", Integer.parseInt(request.getParameter("USER_NO")));
+		commandMap.put("CONTEXT", request.getParameter("CONTEXT"));
+		boardService.insertComment(commandMap.getMap());
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/board/commentDelete.do")
+	public ModelAndView deleteComment(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));
+		
+		commandMap.put("RE_NO", Integer.parseInt((request.getParameter("RE_NO"))));
+		
+		boardService.deleteComment(commandMap.getMap());
+		
 		return mav;
 	}
 }

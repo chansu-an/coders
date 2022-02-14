@@ -33,6 +33,11 @@ public class BoardDAO extends AbstractDAO {
 		insert("board.insertBoard", map);
 		
 	}
+	
+	public void insertComment(Map<String, Object> map) throws Exception{
+		insert("board.insertComment", map);
+		
+	}
 
 	public void insertFile(Map<String, Object> map) throws Exception {
 		insert("board.insertFile", map);
@@ -46,6 +51,11 @@ public class BoardDAO extends AbstractDAO {
 
 	public void delete(Map<String, Object> map) throws Exception{
 		update("board.deleteBoard", map);
+		
+	}
+	
+	public void deleteComment(Map<String, Object> map) throws Exception{
+		update("board.commentDelete", map);
 		
 	}
 

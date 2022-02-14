@@ -26,7 +26,7 @@
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do">공지사항</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
@@ -40,7 +40,7 @@
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do">공지사항</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
