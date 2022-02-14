@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header2.jspf" %>
-
 </head>
   <body class="bg-light">
   <div class="d-flex" id="wrapper">
@@ -46,9 +45,7 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container">
-                
   <main>
-  
     <div class="row g-5">  
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">회원가입</h4>

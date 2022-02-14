@@ -7,7 +7,34 @@
 <body>
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->            
-			
+			<c:choose>
+				<c:when test="${user.ADMIN == 'N'}">
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>
+		                </div>
+            		</div>
+	            </c:when>
+	            <c:otherwise>
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">신고관리</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+		                </div>
+            		</div>
+	            </c:otherwise>
+            </c:choose>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->

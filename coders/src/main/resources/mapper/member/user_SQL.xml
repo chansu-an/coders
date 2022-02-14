@@ -33,11 +33,11 @@ UPDATE USERS SET PASSWORD = #{PASSWORD}, NICK_NAME= #{NICK_NAME}, PROFILE= #{PRO
 ]]></update>
 <!-- 유저 삭제 -->
 <update id="deleteUser" parameterType="hashmap"><![CDATA[
-UPDATE USERS SET DEL_GB = 'Y', DELDATE = SYSDATE WHERE USER_NO =# {USER_NO}
+UPDATE USERS SET DEL_GB = 'Y', DELDATE =SYSDATE WHERE USER_NO=#{USER_NO}
 ]]></update>
 <!-- db상의 유저 삭제 -->
 <delete id="realDeleteUser" parameterType="hashmap"><![CDATA[
-DELETE USERS WHERE DEL_DATE+7 < SYSDATE
+DELETE USERS WHERE DELDATE+7 < SYSDATE
 ]]></delete>
 
 <!-- 유저 정지 -->
@@ -50,11 +50,11 @@ UPDATE USERS SET USER_STOP = 'N', REPORT_COUNT = 0 WHERE USER_NO=#{USERS_NO}
 ]]></update>
 <!-- 유저 신고 -->
 <update id="repostUser" parameterType="hashmap"><![CDATA[
-UPDATE USERS SET REPORT_COUNT = + 1 WHERE USER_NO=#{USERS_NO}
+UPDATE USERS SET REPORT_COUNT =+ 1 WHERE USER_NO=#{USERS_NO}
 ]]></update>
 <!-- 유저 활동점수 증가 -->
 <update id="upActiveScore" parameterType="hashmap"><![CDATA[
-UPDATE USERS SET ACTIVE_SCORE = + '' WHERE USER_NO=#{USERS_NO}
+UPDATE USERS SET ACTIVE_SCORE =+ '' WHERE USER_NO=#{USERS_NO}
 ]]></update>
 <!-- 이력서 작성 -->
 <insert id="insertResume" parameterType="hashmap" ><![CDATA[

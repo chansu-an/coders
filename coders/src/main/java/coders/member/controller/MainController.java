@@ -27,20 +27,14 @@ public class MainController {
 		
 		return mv;
 	}
-	@RequestMapping(value = "/main/logout.do")
-	public String logout(HttpSession session)throws Exception{
-		session.invalidate();
-		return "redirect:/main/LoginForm.do";
-	}
 	
 	
-	@RequestMapping(value="/main/LoginForm.do", method = RequestMethod.POST)
-	public ModelAndView login(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value="/main/Login.do", method = RequestMethod.POST)
+	public ModelAndView login(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/board/mainList.do");
 		
 		commandMap.put("EMAIL", request.getParameter("EMAIL"));
 		commandMap.put("PASSWORD", request.getParameter("PASSWORD"));
-		
 		
 		Map<String, Object> map = mainService.selectLoginUser(commandMap.getMap());
 		
@@ -56,14 +50,9 @@ public class MainController {
 		    System.out.println("request : " + key + " = " + val[i]); // 출력하기
 		  }
 		}*/
-		if(map!=null) {
-			session.setAttribute("map", map);
-			mv.addObject("user", map);
-			mv.setViewName("/main/Main");
-		}else{
-			mv.setViewName("redirect:/main/LoginForm.do");
-		}
 		
+		mv.addObject("user", map);
+		session.setAttribute("session", map);//로그인 유저 정보 세션에 저장
 		return mv;
 	}
 	
@@ -136,18 +125,15 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/main/UserMyPage.do", method = RequestMethod.GET)
-	public ModelAndView userMyPage(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("/main/userMyPage");
-		int user_no = Integer.parseInt(request.getParameter("USER_NO"));
-		System.out.println("userno : " + user_no);
-		commandMap.put("USER_NO", 1);
-		commandMap.put("USER_NO", user_no);
+	@RequestMapping(value="/main/logout.do", method = RequestMethod.GET)
+	public ModelAndView logoutUser(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/main/LoginForm.do");
 		
-		Map<String, Object> map = mainService.selectUserMyPage(commandMap.getMap());
-		
-		mv.addObject("map", map);
+		HttpSession session = request.getSession();
+        
+        session.invalidate();
 		
 		return mv;
 	}
+	
 }

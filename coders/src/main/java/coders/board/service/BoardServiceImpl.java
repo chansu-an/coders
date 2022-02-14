@@ -30,14 +30,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception {
 		boardDAO.updateHitCnt(map);
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		Map<String, Object> tempMap = boardDAO.selectBoardDetail(map);
-		resultMap.put("map", tempMap);
-
-		 List<Map<String, Object>> list = boardDAO.selectFileList(map); 
-		 resultMap.put("list", list); 
-
-		return resultMap;
+		
+		return boardDAO.selectBoardDetail(map);
 	}
 
 	@Override
@@ -52,7 +46,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(Map<String, Object> map, HttpServletRequest req) throws Exception {
+	public void updateBoard(Map<String, Object> map) throws Exception {
 		boardDAO.update(map);
 	}
 
@@ -88,6 +82,17 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<Map<String, Object>> selectReportList(Map<String, Object> map) throws Exception {
 		return boardDAO.selectReportList(map);
+	}
+
+	//게시글의 댓글 리스트
+	@Override
+	public List<Map<String, Object>> selectCommentList(Map<String, Object> map) throws Exception {
+		return boardDAO.selectCommentList(map);
+	}
+
+	@Override
+	public Map<String, Object> selectCommentCount(Map<String, Object> map) throws Exception {
+		return boardDAO.selectCommentCount(map);
 	}
 	
 	

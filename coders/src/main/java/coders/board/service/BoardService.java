@@ -14,7 +14,7 @@ public interface BoardService {
 
 	void insertBoard(Map<String, Object> map, HttpServletRequest req) throws Exception;
 
-	void updateBoard(Map<String, Object> map, HttpServletRequest req) throws Exception;
+	void updateBoard(Map<String, Object> map) throws Exception;
 
 	void deleteBoard(Map<String, Object> map) throws Exception;
 
@@ -27,6 +27,10 @@ public interface BoardService {
 	List<Map<String, Object>> selectDeleteList(Map<String, Object> map) throws Exception;
 
 	List<Map<String, Object>> selectReportList(Map<String, Object> map) throws Exception;
+	
+	List<Map<String, Object>> selectCommentList(Map<String, Object> map) throws Exception;
+	
+	Map<String, Object> selectCommentCount(Map<String, Object> map) throws Exception;
 
 	
 }
