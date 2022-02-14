@@ -74,15 +74,23 @@ public class MypageServiceImpl implements MypageService {
 		mypageDAO.updateMypage(map);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public void deleteUser(Map<String, Object> map) throws Exception {
+		mypageDAO.deleteUser(map);
+		
+	}
+
+	@Override
+	public void insertScrap(Map<String, Object> map) throws Exception {
+		mypageDAO.insertScrap(map);
+		
+	}
+
+	@Override
+	public void insertFollow(Map<String, Object> map) throws Exception {
+		mypageDAO.insertFollow(map);
+		
+	}
 }
 
