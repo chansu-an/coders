@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: anchansu
+=======
+Built-By: h12
+>>>>>>> d79c07921c7cc47eeec23c15f26c31bcbabad37d
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 
