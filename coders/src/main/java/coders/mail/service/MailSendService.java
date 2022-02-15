@@ -14,7 +14,7 @@ import coders.common.common.MailUtils;
 public class MailSendService {
 	@Resource(name = "mailSender")
     private JavaMailSenderImpl mailSender;
-
+	//수정 트리는 쉬운가?
 
     //인증메일 보내기
     public String sendAuthMail(String email) {
