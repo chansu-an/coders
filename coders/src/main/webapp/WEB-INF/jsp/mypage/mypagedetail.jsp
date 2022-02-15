@@ -5,17 +5,19 @@
 <html lang="ko">
 <head>
 <script type="text/javascript">
-	function main() {
-		location.href = "/"
-	}
 	function modify() {
-		location.href = "/net/Mypage/Modify.do"
+		location.href = "../Mypage/Modify.do"
+	}
+	function follow() {
+		location.href = "../Mypage/insertFollow.do?"
 	}
 </script>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
+<%@ include file="/WEB-INF/include/include-menuheader.jspf" %>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
 </head>
-<%@ include file="/WEB-INF/include/include-header.jspf"%>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+
 
 			<!-- Page content-->
 			<div class="container">
@@ -53,6 +55,10 @@
 							<c:if test="${CHECK.equals('Y') }">
 							<button onclick="modify()" class=" btn btn-primary btn-lg"
 								type="button">내정보수정</button>
+								</c:if>
+								<c:if test="${CHECK.equals('N') }">
+							<button onclick="location.href = '../Mypage/insertFollow.do?USER_NO=${USER_NO}'" class=" btn btn-primary btn-lg"
+								type="button">팔로우하기</button>
 								</c:if>
 								</div>
 						</div>
