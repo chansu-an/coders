@@ -107,15 +107,9 @@ public class BoardServiceImpl implements BoardService {
 	//게시글 추천하기
 	@Override
 	public void recommendBoard(Map<String, Object> map) throws Exception {
-<<<<<<< HEAD
 		boardDAO.recommendBoard(map);
 	}
-	
-=======
-		boardDAO.recommendBoard(map);}
 		
-
->>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	//게시글 댓글 삽입
 	@Override
 	public void insertComment(Map<String, Object> map) throws Exception {
