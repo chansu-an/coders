@@ -70,11 +70,11 @@
 				</tr>
 				<tr>
 					<th scope="row">시작일</th>
-					<td colspan="3"><input type="date" id="PROJECT_START" name="PROJECT_START" pattern="\d{2}/\d{2}/\d{2}" class="wdp_90" value="${map.PROJECT_START }"/></td>
+					<td colspan="3"><input type="date" id="PROJECT_START" name="PROJECT_START" pattern="yyyy/mm/dd" class="wdp_90" value="${map.PROJECT_START }"/></td>
 				</tr>
 				<tr>
 					<th scope="row">종료일</th>
-					<td colspan="3"><input type="date" id="PEOJECT_END" name="PROJECT_END" pattern="\d{2}/\d{2}/\d{2}" class="wdp_90" value="${map.PROJECT_END }"/></td>
+					<td colspan="3"><input type="date" id="PEOJECT_END" name="PROJECT_END" pattern="yyyy/mm/dd" class="wdp_90" value="${map.PROJECT_END }"/></td>
 				</tr>
 				<tr>
 					<td colspan="4"><textarea rows="20" cols="100" title="내용" id="PROJECT_CONTEXT" name="PROJECT_CONTEXT">${map.PROJECT_CONTEXT },${map.PROJECT_NO}</textarea></td>

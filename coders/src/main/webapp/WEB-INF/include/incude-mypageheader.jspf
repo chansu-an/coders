@@ -10,9 +10,9 @@
 			<div class="list-group list-group-flush">
 				<a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="../main/Mypage.do?USER_NO=${USER_NO}">활동 보기</a> <a
+					href="../main/Mypage.do?USER_NO=${USER_NO}">정보 보기</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="../Mypage/MypageDetail.do?USER_NO=${USER_NO}">정보 보기</a>
+					href="../Mypage/MypageDetail.do?USER_NO=${USER_NO}">활동 보기</a>
 				<c:if test="${CHECK.equals('Y') }">
 					<form action="">
 						<input type="hidden" value="${USER_NO}">
