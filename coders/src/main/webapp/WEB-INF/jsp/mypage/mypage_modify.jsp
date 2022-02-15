@@ -16,8 +16,9 @@
     	}
     }
     </script>
-    <%@ include file="/WEB-INF/include/include-header2.jspf"%>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-header2.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -95,6 +96,6 @@
   </main> 
 </div>
 <%@ include file="/WEB-INF/include/include-body.jspf" %>
-<%@ include file="/WEB-INF/include/incude-menufooter.jspf"%>
+<%@ include file="/WEB-INF/include/include-menufooter.jspf"%>
 </body>
 </html>

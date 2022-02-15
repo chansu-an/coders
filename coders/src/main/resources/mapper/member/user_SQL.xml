@@ -84,8 +84,8 @@ UPDATE BOARD SET  BOARD_AR = 'N' WHERE BOARD_NO = #{BOARD_NO}
 </update>
 <!-- 이력서 작성 -->
 <insert id="insertResume" parameterType="hashmap" ><![CDATA[
-INSERT INTO RESUME (RESUME_NO,USER_NO,NAME, TELL,EMAIL,ADDRESS,ADDRESS1,ADDRESS2,SKILL,BLOG,FILES,ZIPCODE) 
-		VALUES(RESUME_SEQ.NEXTVAL,#{USER_NO},#{NAME},#{TELL},#{EMAIL},#{ADDRESS},#{ADDRESS1},#{ADDRESS2},#{SKILL},#{BLOG},#{FILES},#{ZIPCODE})
+INSERT INTO RESUME (RESUME_NO,USER_NO,NAME,TELL,EMAIL,ADDRESS,ADDRESS1,SKILL,BLOG,FILES,ZIPCODE) 
+		VALUES(RESUME_SEQ.NEXTVAL,#{USER_NO},#{NAME},#{TELL},#{EMAIL},#{ADDRESS},#{ADDRESS1},#{SKILL},#{BLOG},#{FILES},#{ZIPCODE})
 		]]></insert>
 <!-- 이력서 수정 -->
 <update id="updateResume" parameterType="hashmap" ><![CDATA[
@@ -97,7 +97,7 @@ DELETE RESUME WHERE USER_NO = #{USER_NO}
 		]]></insert>
 <!-- 이력서 상세보기 -->
 <select id="selectResumeDetail" parameterType="hashmap" resultType="hashmap"><![CDATA[
-SELECT NAME,TELL,EMAIL,ADDRESS,ADDRESS1,ADDRESS2,SKILL,BLOG,FILES,ZIPCODE FROM RESUME WHERE USER_NO = #{USER_NO}
+SELECT USER_NO,NAME,TELL,EMAIL,ADDRESS,ADDRESS1,SKILL,BLOG,FILES,ZIPCODE FROM RESUME WHERE USER_NO = #{USER_NO}
 ]]></select>
 <!-- 팔로우 추가 -->
 <insert id="insertFollow" parameterType="hashmap"><![CDATA[

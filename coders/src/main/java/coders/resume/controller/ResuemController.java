@@ -33,28 +33,35 @@ public class ResuemController {
 			mav.setViewName("redirect:/Resume/InsertResume.do");
 			return mav;
 		}
-		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
 		mav.addObject("CHECK", "N");
+		System.out.println(map);
 		if(smap!=null) {
 			if(map.get("USER_NO").equals(smap.get("USER_NO"))) {
 				mav.addObject("CHECK", "Y");
 			}
 		}
 		mav.addObject("map", map);
-		mav.setViewName("/Resuem/resumedetail");
+		mav.setViewName("/Resume/resumedetail");
 		return mav;
 	}
 	//이력서 작성
 	@RequestMapping(value = "/Resume/InsertResume.do",method = RequestMethod.GET)
 	public String insertResumeForm()throws Exception{
-		return "/Resume/InsertResumeForm";
+		return "/Resume/insertResumeForm";
 	}
 	
 	@RequestMapping(value = "/Resume/InsertResume.do",method = RequestMethod.POST)
 	public ModelAndView insertResume(CommandMap commandMap,HttpSession session)throws Exception{
 		ModelAndView mav = new ModelAndView();
-		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
+		if(smap==null) {
+			mav.setViewName("/");
+			return mav;
+		}
 		commandMap.put("USER_NO", smap.get("USER_NO"));
+		commandMap.put("FILES","");
 		resumeService.insertResume(commandMap.getMap());
 		mav.setViewName("redirect:/main/Mypage.do?USER_NO="+smap.get("USER_NO"));
 		return mav;
@@ -64,7 +71,7 @@ public class ResuemController {
 	@RequestMapping(value = "/Resume/UpdateResume.do", method = RequestMethod.GET)
 	public ModelAndView updateResumeForm(HttpSession session)throws Exception{
 		ModelAndView mav = new ModelAndView();
-		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
 		Map<String, Object> map = resumeService.selectResumeDetail(smap);
 		mav.addObject("map", map);
 		mav.setViewName("/Resume/updateResumeForm");
@@ -75,7 +82,9 @@ public class ResuemController {
 		@RequestMapping(value = "/Resume/UpdateResume.do", method = RequestMethod.POST)
 		public ModelAndView updateResume(CommandMap commandMap,HttpSession session)throws Exception{
 			ModelAndView mav = new ModelAndView();
-			Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+			Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
+			commandMap.put("USER_NO", smap.get("USER_NO"));
+			commandMap.put("FILES", "");
 			resumeService.updateResume(commandMap.getMap());
 			mav.setViewName("redirect:/main/Mypage.do?USER_NO="+smap.get("USER_NO"));
 			return mav;
@@ -85,10 +94,11 @@ public class ResuemController {
 		}
 	
 	//이력서 삭제
-		@RequestMapping(value ="/Resuem/DeleteResume.do")
+		@RequestMapping(value ="/Resume/DeleteResume.do")
 		public ModelAndView DeleteResume(HttpSession session)throws Exception{
 			ModelAndView mav =new ModelAndView();
-			Map<String, Object> smap = (Map<String, Object>)session.getAttribute("map");
+			Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
+			System.out.println(smap);
 			resumeService.deleteResume(smap);
 			mav.setViewName("redirect:/main/Mypage.do?USER_NO="+smap.get("USER_NO"));
 			return mav;

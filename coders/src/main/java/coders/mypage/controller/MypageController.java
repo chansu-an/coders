@@ -165,11 +165,12 @@ public ModelAndView mypageDelete(HttpSession session)throws Exception {
 	@RequestMapping(value = "/Mypage/Notification.do")
 public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 		ModelAndView mav = new ModelAndView();
-		Map<String, Object> mapor = (Map<String, Object>)session.getAttribute("session");
-		List<Map<String, Object>> list1 = mypageService.selectArlimeList(mapor);
-		List<Map<String, Object>> list2 = mypageService.selectProjetArList(mapor);
+		Map<String, Object> smap = (Map<String, Object>)session.getAttribute("session");
+		List<Map<String, Object>> list1 = mypageService.selectArlimeList(smap);
+		List<Map<String, Object>> list2 = mypageService.selectProjetArList(smap);
 		mav.addObject("list1", list1);
 		mav.addObject("list2", list2);
+		mav.addObject("smap", smap);
 		mav.setViewName("/mypage/Notification");
 		return mav;
 }
@@ -186,12 +187,10 @@ public ModelAndView selectArlimeList(HttpSession session)throws Exception {
 	}
 	//프로젝트 알림삭제
 	@RequestMapping(value = "/Mypage/ProjectArClick.do")
-	public ModelAndView clickProjectAr(HttpSession session,HttpServletRequest request) {
+	public ModelAndView clickProjectAr(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> mapor = new HashMap<String, Object>();
 		String no = request.getParameter("PROJECT_NO");
-		mapor.put("USER_NO", 1);
-		mapor.put("PROJECT_NO", no);
 		mav.setViewName("redirect:/Project/Team.do?PROJECT_NO="+no);
 		return mav;
 		

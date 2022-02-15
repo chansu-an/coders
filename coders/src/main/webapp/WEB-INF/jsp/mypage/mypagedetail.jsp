@@ -13,8 +13,11 @@
 	}
 </script>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
+<%@ include file="/WEB-INF/include/include-menuheader.jspf" %>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
 </head>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+
 
 			<!-- Page content-->
 			<div class="container">

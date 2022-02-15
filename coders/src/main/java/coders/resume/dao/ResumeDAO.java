@@ -1,6 +1,7 @@
 package coders.resume.dao;
 
 import coders.common.dao.AbstractDAO;
+
 import java.util.Map;
 
 
@@ -20,12 +21,12 @@ public class ResumeDAO extends AbstractDAO{
 	
 	//이력서 수정
 	public void updateResume(Map<String, Object> map )throws Exception{
-		update("user.insertResume", map);
+		update("user.updateResume", map);
 	}
 	
 	//이력서 삭제
 	public void deleteResume(Map<String, Object> map )throws Exception{
-		delete("user.insertResume", map);
+		delete("user.deleteResume", map);
 	}
 	
 

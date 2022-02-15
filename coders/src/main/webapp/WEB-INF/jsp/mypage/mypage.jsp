@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>내활동</title>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
 </head>
 <body>
 <div align="center">
@@ -21,7 +22,7 @@
 		</colgroup>	
 		<tbody>
 			<c:choose>
-				<c:when test="${slist != null}">
+				<c:when test="${fn:length(slist) >0}">
 					<c:forEach items="${slist }" var="row">
 						<tr>
 							<td><a href="#">${row.TITLE }</a></td>
@@ -49,7 +50,7 @@
 		</colgroup>
 		<tbody>
 			<c:choose>
-				<c:when test="${length(flist) != null}">
+				<c:when test="${fn:length(flist) >0}">
 					<c:forEach items="${flist }" var="row">
 						<tr>
 							<td><a href="../main/Mypage.do?USER_NO=${row.FOLLOWER}">${row.NICK_NAME}</a></td>
@@ -65,6 +66,6 @@
 			</tbody>
 		</table>
 	</div>
-<%@ include file="/WEB-INF/include/incude-menufooter.jspf"%>
+<%@ include file="/WEB-INF/include/include-menufooter.jspf"%>
 </body>
 </html>

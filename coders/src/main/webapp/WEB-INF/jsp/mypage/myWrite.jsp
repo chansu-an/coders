@@ -6,8 +6,10 @@
 <head>
 <title>작성글</title>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
 </head>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+
 <body class="bg-light">
 	<div class="d-flex" id="wrapper">
 			<div class="db-example">
