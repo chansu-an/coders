@@ -97,10 +97,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectCommentCount(map);
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	//게시글 신고하기
 	@Override
 	public void reportBoard(Map<String, Object> map) throws Exception {
@@ -112,11 +108,7 @@ public class BoardServiceImpl implements BoardService {
 	public void recommendBoard(Map<String, Object> map) throws Exception {
 		boardDAO.recommendBoard(map);}
 		
-<<<<<<< HEAD
-	}
-=======
 
->>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	//게시글 댓글 삽입
 	@Override
 	public void insertComment(Map<String, Object> map) throws Exception {
@@ -127,15 +119,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteComment(Map<String, Object> map) throws Exception {
 		boardDAO.deleteComment(map);
-<<<<<<< HEAD
+
 	}
 
 	@Override
 	public Map<String, Object> selectBestComment(Map<String, Object> map) throws Exception {
 		return boardDAO.selectBestComment(map);
-=======
 
->>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	}
 	
 	

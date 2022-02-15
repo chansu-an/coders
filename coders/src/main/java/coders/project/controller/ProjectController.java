@@ -24,6 +24,7 @@ public class ProjectController {
 	@RequestMapping(value = "/Project.do")
 	public ModelAndView ProjectList(CommandMap commandMap) throws Exception {
 
+		
 		ModelAndView mav = new ModelAndView("/project/project_board_list");
 
 		List<Map<String, Object>> list = projectService.selectProjectList(commandMap.getMap());
