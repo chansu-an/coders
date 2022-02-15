@@ -23,10 +23,9 @@ SELECT BOARD.BOARD_NO
      , BOARD.TITLE
      , BOARD.CONTEXT
      , BOARD.READ_COUNT
-<<<<<<< HEAD
-=======
+
      , BOARD.IDENTI_TYPE
->>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
+
      , TO_CHAR(BOARD.BOARD_DATE, 'YY/MM/DD(hh24:mm)') "BOARD_DATE"
      , ROWNUM 
      , TEST.REPLY_COUNT
@@ -44,7 +43,7 @@ SELECT BOARD.BOARD_NO
  WHERE BOARD.IDENTI_TYPE= #{IDENTI_TYPE} 
    AND BOARD.DEL_GB = 'N' 
    AND BOARD.REPORT_COUNT<'20' 
-<<<<<<< HEAD
+
    ORDER BY 
 ]]>
 <choose>
@@ -70,10 +69,7 @@ SELECT BOARD.BOARD_NO
 </choose>
 	<![CDATA[BOARD.BOARD_NO DESC]]>
 </select>
-=======
- ORDER BY BOARD.BOARD_NO DESC
-]]></select>
->>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
+
 
 <!-- 게시글 상세보기 -->
 <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap"><![CDATA[
