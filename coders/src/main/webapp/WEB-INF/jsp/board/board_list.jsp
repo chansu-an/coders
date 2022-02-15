@@ -11,7 +11,7 @@
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <c:choose>
-				<c:when test="${session.ADMIN == 'Y'}">
+				<c:when test="${sessionScope.session.ADMIN == 'Y'}">
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
@@ -63,7 +63,17 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-	<h2>게시판 목록</h2>
+	<c:choose>
+    	<c:when test="${IDENTI_TYPE eq '1' }">
+			<h2>공지사항</h2>   	
+    	</c:when>
+    	<c:when test="${IDENTI_TYPE eq '2' }">
+			<h2>QnA</h2>   	
+    	</c:when>
+    	<c:when test="${IDENTI_TYPE eq '3' }">
+			<h2>자유게시판</h2>   	
+    	</c:when>
+    </c:choose>  
 	<table class="board_list">
 		<colgroup>
 			<col width="10%" />
@@ -89,7 +99,7 @@
 					<c:forEach items="${list }" var="row">
 						<tr>
 							<td>${row.ROWNUM }</td>
- 							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
+ 							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
 							<td>${row.READ_COUNT }</td>
 							<td>${row.RECOMMAND_COUNT }</td>
 							<td>${row.NICK_NAME }</td>
@@ -106,7 +116,7 @@
 
 		</tbody>
 	</table>
-	<a href="/net/board/write.do" class="btn" id="write">글쓰기</a>
+	<a href="/net/board/write.do?IDENTI_TYPE=${IDENTI_TYPE }" class="btn" id="write">글쓰기</a>
 	</div>
 	</div>
 
