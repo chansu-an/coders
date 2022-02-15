@@ -58,17 +58,27 @@ function testttt() {
                     </div>
                 </nav>
                 <!-- Page content-->
-	<h2>게시판 상세보기</h2>
+    <c:choose>
+    	<c:when test="${map.IDENTI_TYPE == '1' }">
+			<h2>공지사항</h2>   	
+    	</c:when>
+    	<c:when test="${map.IDENTI_TYPE == '2' }">
+			<h2>QnA</h2>   	
+    	</c:when>
+    	<c:when test="${map.IDENTI_TYPE == '3' }">
+			<h2>자유게시판</h2>   	
+    	</c:when>
+    </c:choose>
 	<table class="board_list">
 		<colgroup>
-			<col width="10%" />
-			<col width="*%" />
-			<col width="15%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="10%" />
-			<col width="10%" />
-			<col width="10%" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
 		</colgroup>
 		<thead>
 			<tr>

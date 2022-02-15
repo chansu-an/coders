@@ -10,25 +10,34 @@
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
-		<div class="border-end bg-white" id="sidebar-wrapper">
-			<div class="sidebar-heading border-bottom bg-light">Start
-				Bootstrap</div>
-			<div class="list-group list-group-flush">
-				<a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Dashboard</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Shortcuts</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Overview</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Events</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Profile</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Status</a>
-			</div>
-		</div>
+		<c:choose>
+				<c:when test="${sessionScope.session.ADMIN == 'Y'}">
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>		                    
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">신고관리</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+		                </div>
+            		</div>
+	            </c:when>
+	            <c:otherwise>
+	            	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
+		                <div class="list-group list-group-flush">
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=1">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=2">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=3">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>
+		                </div>
+            		</div>
+	            </c:otherwise>
+            </c:choose>
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 			<!-- Top navigation-->
@@ -63,7 +72,7 @@
 				</div>
 			</nav>
 			<!-- Page content-->
-			<h2>게시판 목록</h2>
+			<h2>게시판 작성</h2>
 			<form id="frm" name="frm" enctype="multipart/form-data">
 				<table class="board_view">
 					<colgroup>
