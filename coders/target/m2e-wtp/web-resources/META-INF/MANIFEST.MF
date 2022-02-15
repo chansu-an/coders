@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
+Built-By: garde
+=======
 Built-By: anchansu
+>>>>>>> 20567f701f8370fe526c38cde99fa4c6a1b49633
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 
