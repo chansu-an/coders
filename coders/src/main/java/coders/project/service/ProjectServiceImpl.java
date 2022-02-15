@@ -1,5 +1,6 @@
 package coders.project.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,8 +40,13 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public Map<String, Object> selectProjectDetail(Map<String, Object> map) throws Exception {
-
-		Map<String, Object> resultMap = projectDAO.selectProjectDetail(map);
+		
+		Map<String,Object>resultMap = new HashMap<String,Object>();
+		Map<String,Object> tempMap = projectDAO.selectProjectDetail(map);
+		resultMap.put("map", tempMap);
+		List<Map<String,Object>>list = projectDAO.insertFileList(map);
+		resultMap.put("list", list);
+		//Map<String, Object> resultMap = projectDAO.selectProjectDetail(map);
 		return resultMap;
 	}
 
