@@ -28,6 +28,15 @@ public class BoardController {
 	@RequestMapping(value="/board/openBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView openBoardList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("/board/board_list");
+<<<<<<< HEAD
+		System.out.println("aaaaaaaa");
+		System.out.println(request.getParameter("ORDER_TYPE"));
+		commandMap.put("ORDER_TYPE", request.getParameter("ORDER_TYPE"));
+		//commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+		mav.addObject("list", list);		
+
+=======
 		
 		commandMap.put("IDENTI_TYPE", request.getParameter("IDENTI_TYPE"));
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
@@ -45,6 +54,7 @@ public class BoardController {
 		 * count);
 		 */
 		
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 		return mav;
 	}
 	
@@ -101,7 +111,6 @@ public class BoardController {
 		mav.addObject("list", list);
 		mav.addObject("count", count);
 		mav.addObject("bestcomment", bestcomment);
-		/* mav.addObject("list", map.get("list")); */
 		
 		return mav;
 	}
@@ -116,7 +125,7 @@ public class BoardController {
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
 		
 		mav.addObject("map", map);
-		/* mav.addObject("list", map.get("list")); */
+
 		
 		return mav;
 	}

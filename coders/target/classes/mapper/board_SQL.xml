@@ -23,14 +23,18 @@ SELECT BOARD.BOARD_NO
      , BOARD.TITLE
      , BOARD.CONTEXT
      , BOARD.READ_COUNT
+<<<<<<< HEAD
+=======
      , BOARD.IDENTI_TYPE
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
      , TO_CHAR(BOARD.BOARD_DATE, 'YY/MM/DD(hh24:mm)') "BOARD_DATE"
      , ROWNUM 
-     , TEST.RECOMMAND_COUNT
+     , TEST.REPLY_COUNT
+     , BOARD.IDENTI_TYPE
   FROM BOARD 
  INNER JOIN USERS ON BOARD.USER_NO = USERS.USER_NO
  INNER JOIN (SELECT BOARD.BOARD_NO
- 				  , COUNT(REPLY.BOARD_NO) AS RECOMMAND_COUNT
+ 				  , COUNT(REPLY.BOARD_NO) AS REPLY_COUNT
                FROM BOARD
                LEFT OUTER JOIN REPLY ON BOARD.BOARD_NO = REPLY.BOARD_NO 
               WHERE BOARD.IDENTI_TYPE = #{IDENTI_TYPE} 
@@ -40,8 +44,36 @@ SELECT BOARD.BOARD_NO
  WHERE BOARD.IDENTI_TYPE= #{IDENTI_TYPE} 
    AND BOARD.DEL_GB = 'N' 
    AND BOARD.REPORT_COUNT<'20' 
+<<<<<<< HEAD
+   ORDER BY 
+]]>
+<choose>
+	<when test='ORDER_TYPE == "REPLY"'>
+	<![CDATA[
+		TEST.REPLY_COUNT DESC, 
+		]]>
+	</when>
+	<when test='ORDER_TYPE == "READ"'>
+	<![CDATA[
+		BOARD.READ_COUNT DESC, 
+	]]>
+	</when>
+	<when test='ORDER_TYPE == "RECOMMEND"'>
+	<![CDATA[
+		BOARD.RECOMMEND_COUNT DESC, ]]>
+	</when>
+	<otherwise>
+	<![CDATA[
+		BOARD.BOARD_DATE DESC, 
+	]]>
+	</otherwise>
+</choose>
+	<![CDATA[BOARD.BOARD_NO DESC]]>
+</select>
+=======
  ORDER BY BOARD.BOARD_NO DESC
 ]]></select>
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 
 <!-- 게시글 상세보기 -->
 <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap"><![CDATA[
@@ -94,6 +126,7 @@ SELECT COUNT(*) AS COUNT FROM REPLY WHERE BOARD_NO=#{BOARD_NO} AND DEL_GB='N'
 INSERT INTO BOARD (BOARD_NO,TITLE,CONTEXT,USER_NO,IDENTI_TYPE) 
 	    VALUES(BOARD_SEQ.NEXTVAL,#{TITLE},#{CONTEXT},#{USER_NO},#{IDENTI_TYPE})
 	    ]]></insert>
+	    	    
 <!-- 게시글 파일 업로드 -->
 <insert id="boardFile" parameterType="hashmap" ><![CDATA[
 INSERT INTO FILES (FILENO,BOARD_NO,ORIGINAL_FILE_NAME,FILE_SIZE,STORED_FILE_NAME)

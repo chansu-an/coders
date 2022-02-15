@@ -7,6 +7,12 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
+<script>
+	function test(f){
+		f.action="/net/board/openBoardList.do"
+		f.submit();
+	}
+</script>
 <body>
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
@@ -63,6 +69,21 @@
                     </div>
                 </nav>
                 <!-- Page content-->
+<<<<<<< HEAD
+	<h2>게시판 목록</h2>
+	<form name="ORDER_TYPE" method="post">
+	<p style="text-align:right;">
+		<select onchange="test(this.form);" id="ORDER_TYPE" name="ORDER_TYPE">
+			<option></option>
+			<option value="DATE">최신순</option>
+			<option value="REPLY">댓글순</option>
+			<option value="READ">조회수</option>
+			<option value="RECOMMEND">추천순</option>
+		</select>
+		<input type="hidden" name="ORDER_TYPE" value="${ORDER_TYPE }"/>
+	</p>
+	</form>
+=======
 	<c:choose>
     	<c:when test="${IDENTI_TYPE eq '1' }">
 			<h2>공지사항</h2>   	
@@ -74,6 +95,7 @@
 			<h2>자유게시판</h2>   	
     	</c:when>
     </c:choose>  
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 	<table class="board_list">
 		<colgroup>
 			<col width="10%" />
@@ -88,7 +110,7 @@
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">조회수</th>
-				<th scope="col">댓글수</th>
+				<!-- <th scope="col">댓글수</th> -->
 				<th scope="col">작성자</th>
 				<th scope="col">작성일</th>
 			</tr>
@@ -99,9 +121,13 @@
 					<c:forEach items="${list }" var="row">
 						<tr>
 							<td>${row.ROWNUM }</td>
+<<<<<<< HEAD
+ 							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a> [${row.REPLY_COUNT}]</td>
+=======
  							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 							<td>${row.READ_COUNT }</td>
-							<td>${row.RECOMMAND_COUNT }</td>
+							<%-- <td>${row.REPLY_COUNT }</td> --%>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 						</tr>
@@ -116,7 +142,11 @@
 
 		</tbody>
 	</table>
+<<<<<<< HEAD
+	<p style="text-align:right;"><a href="/net/board/write.do" class="btn" id="write">글쓰기</a>
+=======
 	<a href="/net/board/write.do?IDENTI_TYPE=${IDENTI_TYPE }" class="btn" id="write">글쓰기</a>
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 	</div>
 	</div>
 

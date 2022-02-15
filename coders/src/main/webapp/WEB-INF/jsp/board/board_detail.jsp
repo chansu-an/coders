@@ -119,6 +119,7 @@ function testttt() {
 	<!-- 작성자만 가능 -->
 	<a href="/net/board/modify.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="write">수정하기</a>
 	<a href="/net/board/delete.do?BOARD_NO=${map.BOARD_NO }" class="btn" id="delete">삭제하기</a>
+	<a href="/net/board/openBoardList.do" class="btn" id="boardList">목록보기</a>
 	
 	<!-- 스크랩하기 -->
 	
