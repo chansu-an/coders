@@ -54,7 +54,7 @@
 			<tbody>
 				<tr>
 					<th scope="row">프로젝트 번호</th>
-					<td>${map.PROJECT_NO }</td>
+					<td>${map.PROJECT_NO}</td>
 				</tr>
 				<tr>
 					<th scope="row">작성자</th>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<th scope="row">제목</th>
-					<td colspan="3"><input type="text" id="PROJECT_NAME" name="PROJECT_NAME" class="wdp_90" value="${map.PROJECT_NAME }"/></td>
+					<td colspan="3"><input type="text" id="PROJECT_NAME" name="PROJECT_NAME"  class="wdp_90" value="${map.PROJECT_NAME }"/></td>
 				</tr>
 				<tr>
 					<th scope="row">참여 인원</th>
@@ -70,19 +70,18 @@
 				</tr>
 				<tr>
 					<th scope="row">시작일</th>
-					<td colspan="3"><input type="date" id="PROJECT_START" name="PROJECT_START" class="wdp_90" value="${map.PROJECT_START }"/></td>
+					<td colspan="3"><input type="date" id="PROJECT_START" name="PROJECT_START" pattern="\d{2}/\d{2}/\d{2}" class="wdp_90" value="${map.PROJECT_START }"/></td>
 				</tr>
 				<tr>
 					<th scope="row">종료일</th>
-					<td colspan="3"><input type="date" id="PEOJECT_END" name="PEOJECT_END" class="wdp_90" value="${map.PROJECT_END }"/></td>
+					<td colspan="3"><input type="date" id="PEOJECT_END" name="PROJECT_END" pattern="\d{2}/\d{2}/\d{2}" class="wdp_90" value="${map.PROJECT_END }"/></td>
 				</tr>
 				<tr>
-					<td colspan="4"><textarea rows="20" cols="100" title="내용" id="PROJECT_CONTEXT" name="PROJECT_CONTEXT">${map.PROJECT_CONTEXT }</textarea></td>
+					<td colspan="4"><textarea rows="20" cols="100" title="내용" id="PROJECT_CONTEXT" name="PROJECT_CONTEXT">${map.PROJECT_CONTEXT },${map.PROJECT_NO}</textarea></td>
 				</tr>
 			</tbody>
 			</table>
 			<a href="./Project.do" class="btn" id="list">목록으로</a>
-			<input type="hidden" name="PROJECT_NO" value="${map.PROJECT_NO }">
 			<input type="submit" value="수정하기"/>
 		</form>
 	</div>
