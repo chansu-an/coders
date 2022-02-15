@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+var test = true
+function testttt() {
+	
+	alert(test);
+	if(test){
+		document.getElementById('test1').className = 'navbar-collapse collapse show';
+		 test = false;
+	}else{
+		document.getElementById('test1').className = 'navbar-collapse collapse';
+		 test = true;
+		
+	}
+	
+};
+</script>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
@@ -131,8 +147,9 @@
 	  <ol class="replyList">
 	    <c:forEach items="${list}" var="row">
 	    	<c:choose>
+	    	
 	    		<c:when test="${row.REF_STEP == '0' }">
-	    		<div>
+	    		<div onclick="testttt()">
 			        <p>
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
@@ -140,6 +157,9 @@
 			        <p>${row.CONTEXT}               		
 			        	<a href="/net/board/commentDelete.do?RE_NO=${row.RE_NO }&BOARD_NO=${map.BOARD_NO}" class="btn">삭제</a>	
 			        </p>
+			    </div>
+			    <div id="test1" class="navbar-collapse collapse " >
+			    테스트
 			    </div>		        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '1' }">
@@ -152,7 +172,7 @@
 			    </div>			        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '2' }">
-	    		<div>
+	    		<div >
 			        <p>
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 

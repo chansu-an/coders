@@ -31,7 +31,11 @@ public class BoardController {
 		
 		commandMap.put("IDENTI_TYPE", request.getParameter("IDENTI_TYPE"));
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+<<<<<<< HEAD
 		String IDENTI_TYPE = list.get(0).get("IDENTI_TYPE").toString();
+=======
+
+>>>>>>> 548dc4b427d1fbad232100d4a49b65ca0970dcf8
 		mav.addObject("list", list);
 		mav.addObject("IDENTI_TYPE", IDENTI_TYPE);
 		
@@ -170,6 +174,10 @@ public class BoardController {
 		return mav;
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> 548dc4b427d1fbad232100d4a49b65ca0970dcf8
 	//글 추천하기
 	@RequestMapping(value="/board/recommend.do" )
 	public ModelAndView recommendBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
