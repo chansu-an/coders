@@ -31,7 +31,10 @@ public class BoardController {
 		
 		//commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+<<<<<<< HEAD
+=======
 
+>>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 		mav.addObject("list", list);
 		/*
 		 * Map<String, Object> count =
@@ -86,12 +89,17 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView("/board/board_detail");
 		
 		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
-		List<Map<String, Object>> list = boardService.selectCommentList(commandMap.getMap());//댓글 리스트
 		Map<String, Object> count = boardService.selectCommentCount(commandMap.getMap());//댓글수
+		Map<String, Object> bestcomment = boardService.selectBestComment(commandMap.getMap());//댓글수
+		
+		List<Map<String, Object>> list = boardService.selectCommentList(commandMap.getMap());//댓글 리스트
+		
 		mav.addObject("map", map);
 		mav.addObject("list", list);
 		mav.addObject("count", count);
+		mav.addObject("bestcomment", bestcomment);
 		/* mav.addObject("list", map.get("list")); */
 		
 		return mav;
@@ -165,21 +173,27 @@ public class BoardController {
 		return mav;
 	}
 	
+<<<<<<< HEAD
+=======
 
+>>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	//글 추천하기
-		@RequestMapping(value="/board/recommend.do" )
-		public ModelAndView recommendBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
-			ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));
+	@RequestMapping(value="/board/recommend.do" )
+	public ModelAndView recommendBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));
 			
-			boardService.recommendBoard(commandMap.getMap());
+		boardService.recommendBoard(commandMap.getMap());
 			
-			return mav;
-		}
+		return mav;
+	}
 	
 	//댓글 작성하기
 
 	//게시글 댓글 작성
+<<<<<<< HEAD
+=======
 
+>>>>>>> dedf593654f69bd76506b7acf1a5d0ab2636a73a
 	@RequestMapping(value="/board/commentInsert.do", method = RequestMethod.POST)
 	public ModelAndView InsertComment(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/board/detail.do?BOARD_NO=" + request.getParameter("BOARD_NO"));

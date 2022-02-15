@@ -68,7 +68,8 @@
 		<colgroup>
 			<col width="10%" />
 			<col width="*%" />
-			<col width="15%" />
+			<col width="10%" />
+			<col width="10%" />
 			<col width="20%" />
 			<col width="20%" />
 		</colgroup>
@@ -77,6 +78,7 @@
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">조회수</th>
+				<th scope="col">댓글수</th>
 				<th scope="col">작성자</th>
 				<th scope="col">작성일</th>
 			</tr>
@@ -89,6 +91,7 @@
 							<td>${row.ROWNUM }</td>
  							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
 							<td>${row.READ_COUNT }</td>
+							<td>${row.RECOMMAND_COUNT }</td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 						</tr>
