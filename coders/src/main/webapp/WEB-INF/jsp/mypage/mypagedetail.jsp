@@ -13,7 +13,6 @@
 	}
 </script>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
-<%@ include file="/WEB-INF/include/include-menuheader.jspf" %>
 <%@ include file="/WEB-INF/include/include-navbar.jspf"%>
 <%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
 </head>
