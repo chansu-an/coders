@@ -93,6 +93,11 @@ public class BoardDAO extends AbstractDAO {
 	public Map<String, Object> selectCommentCount(Map<String, Object> map) {
 		return (Map<String, Object>)selectOne("board.commentCount", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectBestComment(Map<String, Object> map) {
+		return (Map<String, Object>)selectOne("board.bestComment", map);
+	}
 
 	public void reportBoard(Map<String, Object> map) {
 		update("board.reportBoard", map);	

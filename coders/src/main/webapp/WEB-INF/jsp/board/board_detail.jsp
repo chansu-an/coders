@@ -123,6 +123,17 @@ function testttt() {
 	<!-- 댓글 리스트 -->
 	<div id="reply">
 	  <div>댓글 <c:out value="${count.COUNT }"></c:out></div>
+	  <c:if test="${bestcomment.RECOMMAND_COUNT != '0' }">
+	  <div>
+	  	<p>
+			작성자 : ${bestcomment.NICK_NAME}<br />
+			작성 날짜 : ${bestcomment.REPLY_DATE } 
+		</p>			
+		<p>${bestcomment.CONTEXT}               		
+			<a href="/net/board/commentDelete.do?RE_NO=${bestcomment.RE_NO }&BOARD_NO=${map.BOARD_NO}" class="btn">삭제</a>	
+		</p>
+	  </div>
+	  </c:if>
 	  <ol class="replyList">
 	    <c:forEach items="${list}" var="row">
 	    	<c:choose>

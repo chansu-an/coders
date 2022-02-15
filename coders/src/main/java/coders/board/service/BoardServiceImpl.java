@@ -97,7 +97,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectCommentCount(map);
 	}
 
-
 	//게시글 신고하기
 	@Override
 	public void reportBoard(Map<String, Object> map) throws Exception {
@@ -120,6 +119,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteComment(Map<String, Object> map) throws Exception {
 		boardDAO.deleteComment(map);
+
+	}
+
+	@Override
+	public Map<String, Object> selectBestComment(Map<String, Object> map) throws Exception {
+		return boardDAO.selectBestComment(map);
 
 	}
 	
