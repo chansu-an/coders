@@ -14,7 +14,6 @@
 </script>
 <%@ include file="/WEB-INF/include/include-header2.jspf"%>
 </head>
-<%@ include file="/WEB-INF/include/include-header.jspf"%>
 <%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
 
 			<!-- Page content-->

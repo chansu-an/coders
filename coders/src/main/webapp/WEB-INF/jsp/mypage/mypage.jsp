@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내활동</title>
-<%@ include file="/WEB-INF/include/include-header.jspf"%>
+<%@ include file="/WEB-INF/include/include-header2.jspf"%>
 <%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
 </head>
 <body>
@@ -21,7 +21,7 @@
 		</colgroup>	
 		<tbody>
 			<c:choose>
-				<c:when test="${fn:length(slist) > 0}">
+				<c:when test="${slist != null}">
 					<c:forEach items="${slist }" var="row">
 						<tr>
 							<td><a href="#">${row.TITLE }</a></td>
@@ -49,7 +49,7 @@
 		</colgroup>
 		<tbody>
 			<c:choose>
-				<c:when test="${fn:length(flist) > 0}">
+				<c:when test="${length(flist) != null}">
 					<c:forEach items="${flist }" var="row">
 						<tr>
 							<td><a href="../main/Mypage.do?USER_NO=${row.FOLLOWER}">${row.NICK_NAME}</a></td>
