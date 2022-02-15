@@ -1,5 +1,11 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: h12
+=======
+
+Built-By: garde
+
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 

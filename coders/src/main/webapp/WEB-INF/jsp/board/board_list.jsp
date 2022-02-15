@@ -17,7 +17,7 @@
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <c:choose>
-				<c:when test="${session.ADMIN == 'Y'}">
+				<c:when test="${sessionScope.session.ADMIN == 'Y'}">
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
@@ -69,6 +69,7 @@
                     </div>
                 </nav>
                 <!-- Page content-->
+<<<<<<< HEAD
 	<h2>게시판 목록</h2>
 	<form name="ORDER_TYPE" method="post">
 	<p style="text-align:right;">
@@ -82,6 +83,19 @@
 		<input type="hidden" name="ORDER_TYPE" value="${ORDER_TYPE }"/>
 	</p>
 	</form>
+=======
+	<c:choose>
+    	<c:when test="${IDENTI_TYPE eq '1' }">
+			<h2>공지사항</h2>   	
+    	</c:when>
+    	<c:when test="${IDENTI_TYPE eq '2' }">
+			<h2>QnA</h2>   	
+    	</c:when>
+    	<c:when test="${IDENTI_TYPE eq '3' }">
+			<h2>자유게시판</h2>   	
+    	</c:when>
+    </c:choose>  
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 	<table class="board_list">
 		<colgroup>
 			<col width="10%" />
@@ -107,7 +121,11 @@
 					<c:forEach items="${list }" var="row">
 						<tr>
 							<td>${row.ROWNUM }</td>
+<<<<<<< HEAD
  							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a> [${row.REPLY_COUNT}]</td>
+=======
+ 							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 							<td>${row.READ_COUNT }</td>
 							<%-- <td>${row.REPLY_COUNT }</td> --%>
 							<td>${row.NICK_NAME }</td>
@@ -124,7 +142,11 @@
 
 		</tbody>
 	</table>
+<<<<<<< HEAD
 	<p style="text-align:right;"><a href="/net/board/write.do" class="btn" id="write">글쓰기</a>
+=======
+	<a href="/net/board/write.do?IDENTI_TYPE=${IDENTI_TYPE }" class="btn" id="write">글쓰기</a>
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 	</div>
 	</div>
 

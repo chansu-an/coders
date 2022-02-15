@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+var test = true
+function testttt() {
+	
+	alert(test);
+	if(test){
+		document.getElementById('test1').className = 'navbar-collapse collapse show';
+		 test = false;
+	}else{
+		document.getElementById('test1').className = 'navbar-collapse collapse';
+		 test = true;
+		
+	}
+	
+};
+</script>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
@@ -42,17 +58,27 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-	<h2>게시판 상세보기</h2>
+    <c:choose>
+    	<c:when test="${map.IDENTI_TYPE == '1' }">
+			<h2>공지사항</h2>   	
+    	</c:when>
+    	<c:when test="${map.IDENTI_TYPE == '2' }">
+			<h2>QnA</h2>   	
+    	</c:when>
+    	<c:when test="${map.IDENTI_TYPE == '3' }">
+			<h2>자유게시판</h2>   	
+    	</c:when>
+    </c:choose>
 	<table class="board_list">
 		<colgroup>
-			<col width="10%" />
-			<col width="*%" />
-			<col width="15%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="10%" />
-			<col width="10%" />
-			<col width="10%" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
+			<col width="100px" />
 		</colgroup>
 		<thead>
 			<tr>
@@ -122,8 +148,9 @@
 	  <ol class="replyList">
 	    <c:forEach items="${list}" var="row">
 	    	<c:choose>
+	    	
 	    		<c:when test="${row.REF_STEP == '0' }">
-	    		<div>
+	    		<div onclick="testttt()">
 			        <p>
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 
@@ -131,6 +158,9 @@
 			        <p>${row.CONTEXT}               		
 			        	<a href="/net/board/commentDelete.do?RE_NO=${row.RE_NO }&BOARD_NO=${map.BOARD_NO}" class="btn">삭제</a>	
 			        </p>
+			    </div>
+			    <div id="test1" class="navbar-collapse collapse " >
+			    테스트
 			    </div>		        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '1' }">
@@ -143,7 +173,7 @@
 			    </div>			        
 		        </c:when>
 	    		<c:when test="${row.REF_STEP == '2' }">
-	    		<div>
+	    		<div >
 			        <p>
 			        작성자 : ${row.NICK_NAME} / ${row.REF_STEP }<br />
 			        작성 날짜 : ${row.REPLY_DATE } 

@@ -28,6 +28,7 @@ public class BoardController {
 	@RequestMapping(value="/board/openBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView openBoardList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("/board/board_list");
+<<<<<<< HEAD
 		System.out.println("aaaaaaaa");
 		System.out.println(request.getParameter("ORDER_TYPE"));
 		commandMap.put("ORDER_TYPE", request.getParameter("ORDER_TYPE"));
@@ -35,6 +36,25 @@ public class BoardController {
 		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
 		mav.addObject("list", list);		
 
+=======
+		
+		commandMap.put("IDENTI_TYPE", request.getParameter("IDENTI_TYPE"));
+		List<Map<String, Object>> list = boardService.selectBoardList(commandMap.getMap());
+<<<<<<< HEAD
+		String IDENTI_TYPE = list.get(0).get("IDENTI_TYPE").toString();
+=======
+
+>>>>>>> 548dc4b427d1fbad232100d4a49b65ca0970dcf8
+		mav.addObject("list", list);
+		mav.addObject("IDENTI_TYPE", IDENTI_TYPE);
+		
+		/*
+		 * Map<String, Object> count =
+		 * boardService.selectCommentCount(commandMap.getMap()); mav.addObject("count",
+		 * count);
+		 */
+		
+>>>>>>> db488c60dac7d209eb40ad69e31df6fcda34a461
 		return mav;
 	}
 	
@@ -79,6 +99,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView("/board/board_detail");
 		
 		commandMap.put("BOARD_NO", Integer.parseInt(request.getParameter("BOARD_NO")));
+		commandMap.put("IDENTI_TYPE", request.getParameter("IDENTI_TYPE"));
 		
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
 		Map<String, Object> count = boardService.selectCommentCount(commandMap.getMap());//댓글수
@@ -162,7 +183,10 @@ public class BoardController {
 		return mav;
 	}
 	
+<<<<<<< HEAD
+=======
 
+>>>>>>> 548dc4b427d1fbad232100d4a49b65ca0970dcf8
 	//글 추천하기
 	@RequestMapping(value="/board/recommend.do" )
 	public ModelAndView recommendBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
