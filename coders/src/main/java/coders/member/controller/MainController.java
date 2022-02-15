@@ -21,7 +21,7 @@ public class MainController {
 	@Resource(name="mainService")
 	private MainService mainService;
 	
-	@RequestMapping(value="/main/LoginForm.do", method = RequestMethod.GET)
+	@RequestMapping(value="/main/Login.do", method = RequestMethod.GET)
 	public ModelAndView loginForm(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("/main/login");
 		
@@ -67,7 +67,7 @@ public class MainController {
 	
 	@RequestMapping(value="/main/RegisterInsert.do", method = RequestMethod.POST)
 	public ModelAndView registerInsert(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/main/LoginForm.do");
+		ModelAndView mv = new ModelAndView("redirect:/main/Login.do");
 		
 		commandMap.put("NICK_NAME", request.getParameter("NICK_NAME"));
 		commandMap.put("EMAIL", request.getParameter("EMAIL"));
@@ -127,7 +127,7 @@ public class MainController {
 	
 	@RequestMapping(value="/main/logout.do", method = RequestMethod.GET)
 	public ModelAndView logoutUser(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/main/LoginForm.do");
+		ModelAndView mv = new ModelAndView("redirect:/main/Login.do");
 		
 		HttpSession session = request.getSession();
         
