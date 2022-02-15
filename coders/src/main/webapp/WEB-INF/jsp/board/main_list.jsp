@@ -22,7 +22,7 @@
 <div class="d-flex" id="wrapper">
             <!-- Sidebar-->            
 			<c:choose>
-				<c:when test="${session.ADMIN == 'Y'}">
+				<c:when test="${sessionScope.session.ADMIN == 'Y'}">
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
@@ -40,9 +40,9 @@
 	            	<div class="border-end bg-white" id="sidebar-wrapper">
 		                <div class="sidebar-heading border-bottom bg-light">Coders</div>
 		                <div class="list-group list-group-flush">
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do">공지사항</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">QnA 게시판</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=1">공지사항</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=2">QnA 게시판</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/net/board/openBoardList.do?IDENTI_TYPE=3">자유게시판</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">프로젝트</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">건의사항</a>
 		                </div>
@@ -93,7 +93,7 @@
 				<c:when test="${fn:length(list1) > 0}">
 					<c:forEach items="${list1 }" var="row">
 						<tr>
-							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 						</tr>
@@ -130,7 +130,7 @@
 				<c:when test="${fn:length(list2) > 0}">
 					<c:forEach items="${list2 }" var="row">
 						<tr>
-							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 							<td>${row.RECOMMEND_COUNT }</td>
@@ -167,7 +167,7 @@
 				<c:when test="${fn:length(list3) > 0}">
 					<c:forEach items="${list3 }" var="row">
 						<tr>
-							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}">${row.TITLE }</a></td>
+							<td><a href="/net/board/detail.do?BOARD_NO=${row.BOARD_NO}&IDENTI_TYPE=${row.IDENTI_TYPE}">${row.TITLE }</a></td>
 							<td>${row.NICK_NAME }</td>
 							<td>${row.BOARD_DATE }</td>
 							<td>${row.RECOMMEND_COUNT }</td>

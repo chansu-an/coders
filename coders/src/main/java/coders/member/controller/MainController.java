@@ -14,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import coders.common.common.CommandMap;
 import coders.member.service.MainService;
+import coders.mail.service.MailSendService;
 
 @Controller
 public class MainController {
 	
 	@Resource(name="mainService")
 	private MainService mainService;
+	@Resource(name="mss")
+	private MailSendService mailSendService;
 	
 	@RequestMapping(value="/main/Login.do", method = RequestMethod.GET)
 	public ModelAndView loginForm(CommandMap commandMap) throws Exception{
@@ -73,7 +76,7 @@ public class MainController {
 		commandMap.put("EMAIL", request.getParameter("EMAIL"));
 		commandMap.put("PASSWORD", request.getParameter("PASSWORD"));
 		commandMap.put("PROFILE", "https://cdn.discordapp.com/attachments/934773446431346706/940842849874878484/profile.jpg");
-		
+		mailSendService.sendAuthMail((String)request.getParameter("EMAIL"));
 		mainService.insertUser(commandMap.getMap());
 		
 		return mv;
