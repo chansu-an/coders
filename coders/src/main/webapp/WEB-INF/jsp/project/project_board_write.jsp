@@ -82,15 +82,15 @@
 						</tr>
 					</tbody>
 				</table>
-			<!-- 	<div id="fileDiv">
+			 	<div id="fileDiv">
 					<p>
 						<input type="file" id="file" name="file_0"> <a
 							href="#this" class="btn" id="delete" name="delete">삭제</a>
 					</p>
-				</div> -->
+				</div> 
 				<br />
 				<br /> 
-				<a href="/Project/ProjectFile.do" class="btn" id="addFile">파일 추가</a> 
+				<a href="/net//project/ProjectFile.do" class="btn" id="addFile">파일 추가</a> 
 				<a href="/net//Project/Write.do" class="btn" id="write">작성하기</a> 
 				<a href="/net//Project.do" class="btn" id="list">목록으로</a>
 			</form>
@@ -99,18 +99,18 @@
 		<br />
 
 		<%@ include file="/WEB-INF/include/include-body.jspf"%>
-		<!-- <script type="text/javascript">
+		 <script type="text/javascript">
 		var gfv_count = 1;
 	
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
-				fn_openBoardList();
+				fn_openProjectList();
 			});
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
 				e.preventDefault();
-				fn_boardWrite();
+				fn_insertProject();
 			});
 			
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
@@ -148,6 +148,6 @@
 		function fn_deleteFile(obj){
 			obj.parent().remove();
 		}
-	</script> -->
+	</script> 
 </body>
 </html>
