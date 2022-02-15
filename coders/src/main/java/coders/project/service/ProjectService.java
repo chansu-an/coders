@@ -3,6 +3,8 @@ package coders.project.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 public interface ProjectService {
 
@@ -25,8 +27,7 @@ public interface ProjectService {
 
 	// 파일 업로드 
 		void selectProjectFile(Map<String,Object>map)throws Exception;
-	
-	
-		
+	// project Controller의 추가 02.15
+		void insertProject(Map<String,Object>map,HttpServletRequest request)throws Exception;
 	
 }

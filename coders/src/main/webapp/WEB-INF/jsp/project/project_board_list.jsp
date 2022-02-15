@@ -63,7 +63,7 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-	<h2>게시판 목록</h2>
+	<h2>프로젝트 게시판</h2>
 	<table class="project_board_list">
 		<colgroup>
 			<col width="10%" />
@@ -107,7 +107,8 @@
 
 		</tbody>
 	</table>
-	<a href="/net/Project/Write.do" class="btn" id="write">글쓰기</a>
+	<a href="/net/Project/Write.do" class="btn" id="write">프로젝트 생성</a>
+
 	</div>
 	</div>
 

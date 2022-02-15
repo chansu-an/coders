@@ -53,6 +53,7 @@
 			<col width="10%" />
 			<col width="10%" />
 		</colgroup>
+		<caption>프로젝트 상세보기</caption>
 		<thead>
 			<tr>
 				<th scope="col">프로젝트 번호</th>
@@ -63,6 +64,7 @@
 				<th scope="col">종료일</th>
 				<th scope="col">인원수</th>
 			</tr>
+			
 		</thead>
 		<tbody>
 			<c:choose>
@@ -76,6 +78,10 @@
 						<td>${map.PROJECT_END}</td>
 						<td>${map.PROJECT_MEMBER}</td>
 					</tr>
+					<tr>
+						<th scope="row">첨부파일</th>
+						<td colspan="3">
+						
 				</c:when>
 				<c:otherwise>
 					<tr>

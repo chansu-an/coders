@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
+<%@ include file="/WEB-INF/include/include-header2.jspf"%>
+<%@ include file="/WEB-INF/include/include-mypageheader.jspf"%>
+<%@ include file="/WEB-INF/include/include-navbar.jspf"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/include/include-header.jspf"%>
-<%@ include file="/WEB-INF/include/incude-mypageheader.jspf"%>
+
 	<h2>게시판 알림</h2>
 	<table class="board_list">
 		<colgroup>
